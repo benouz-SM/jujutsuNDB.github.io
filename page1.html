@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ju Jutsu Club Notre-Dame de Bondeville – Wa Jutsu</title>
+    <meta name="description" content="Club de ju-jutsu traditionnel japonais (méthode Wa Jutsu) à Notre-Dame de Bondeville : art martial traditionnel, non compétitif, pour enfants, ados et adultes.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Styles internes : tu pourras les sortir plus tard dans style.css si tu veux -->
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #181818;
+            --accent: #e53935;
+            --accent-soft: #ffccbc;
+            --text-main: #f5f5f5;
+            --text-muted: #bdbdbd;
+            --border-soft: #2c2c2c;
+            --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background: radial-gradient(circle at top, #1f1f1f 0, #050505 55%);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* --- Barre supérieure --- */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(14px);
+            background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(10,10,10,0.85));
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-circle {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-soft);
+            letter-spacing: 1px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo-text span:first-child {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+        }
+
+        .logo-text span:last-child {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+
+        nav a {
+            padding: 6px 0;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.2s ease-out;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            background: linear-gradient(135deg, #e53935, #ff7043);
+            color: #fff;
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-cta:hover {
+            filter: brightness(1.06);
+        }
+
+        /* --- Section hero --- */
+
+        .hero {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 32px 18px 40px;
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+            gap: 34px;
+            align-items: center;
+        }
+
+        .hero-text {
+            position: relative;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(229,57,53,0.08);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: var(--accent-soft);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 12px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 14px rgba(229,57,53,0.8);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 3vw + 1rem, 2.6rem);
+            margin: 0 0 10px;
+            letter-spacing: 0.03em;
+        }
+
+        h1 span {
+            color: var(--accent-soft);
+        }
+
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            max-width: 520px;
+            margin-bottom: 18px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .tag-pill {
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            border-radius: 999px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #e53935, #ff7043);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .btn-main span:last-child {
+            font-size: 1.1rem;
+        }
+
+        .btn-ghost {
+            padding: 9px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(10,10,10,0.6);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-note strong {
+            color: var(--accent-soft);
+        }
+
+        /* --- Carte dojo / image --- */
+
+        .hero-media {
+            position: relative;
+        }
+
+        .hero-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: radial-gradient(circle at top left, #2c2c2c 0, #151515 45%, #050505 100%);
+            box-shadow:
+                0 26px 80px rgba(0,0,0,0.8),
+                0 0 0 1px rgba(255,255,255,0.03);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.1) contrast(1.1);
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 55%);
+        }
+
+        .badge-top {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(0,0,0,0.7);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.78rem;
+            color: var(--accent-soft);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #4caf50;
+            box-shadow: 0 0 12px rgba(76,175,80,0.9);
+        }
+
+        .hero-card-content {
+            padding: 14px 14px 12px;
+        }
+
+        .hero-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .hero-card-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .hero-card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            font-size: 0.8rem;
+        }
+
+        .hero-card-chip {
+            padding: 6px 8px;
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-card-chip strong {
+            font-size: 0.8rem;
+        }
+
+        .hero-card-chip span {
+            display: block;
+            margin-top: 2px;
+            color: var(--text-muted);
+        }
+
+        .hero-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .hero-card-footer span strong {
+            color: var(--accent-soft);
+        }
+
+        /* --- Section infos rapides --- */
+
+        .section-infos {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 18px 40px;
+        }
+
+        .infos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 14px 14px 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .info-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .info-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Footer --- */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 14px 18px 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            background: #050505;
+        }
+
+        /* --- Responsive --- */
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 22px;
+            }
+
+            nav {
+                display: none; /* on simplifie sur mobile, tu pourras faire un vrai menu burger plus tard */
+            }
+
+            header {
+                position: static;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .infos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo-block">
+            <div class="logo-circle">JJ</div>
+            <div class="logo-text">
+                <span>Ju-jutsu traditionnel</span>
+                <span>Club Notre-Dame de Bondeville</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#club">Le club</a>
+            <a href="#horaires">Horaires</a>
+            <a href="#tarifs">Tarifs</a>
+            <a href="#contact">Contact</a>
+            <a class="nav-cta" href="#essai">Cours d’essai</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-text">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                <span>Wa Jutsu – méthode traditionnelle</span>
+            </div>
+            <h1>
+                Art martial japonais, <span>non compétitif</span> et accessible à tous.
+            </h1>
+            <p class="hero-subtitle">
+                Le ju-jutsu traditionnel (méthode Wa Jutsu) développe équilibre, respiration,
+                respect et confiance en soi, loin de l’esprit de compétition, pour les enfants,
+                les ados et les adultes.
+            </p>
+
+            <div class="hero-tags">
+                <div class="tag-pill">Enfants dès 6 ans</div>
+                <div class="tag-pill">Ados & adultes</div>
+                <div class="tag-pill">Deux cours d’essai gratuits</div>
+                <div class="tag-pill">Notre-Dame de Bondeville (76)</div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#essai" class="btn-main">
+                    <span>Réserver un cours d’essai</span>
+                    <span>→</span>
+                </a>
+                <a href="#club" class="btn-ghost">
+                    Découvrir le ju-jutsu traditionnel
+                </a>
+            </div>
+
+            <p class="hero-note">
+                <strong>Pass Jeune 76</strong> et <strong>Pass Sport</strong> acceptés.
+                Possibilité de paiement en plusieurs fois selon accord avec la présidente.
+            </p>
+        </div>
+
+        <div class="hero-media">
+            <article class="hero-card">
+                <div class="hero-image-wrapper">
+                    <!-- Image hero : à mettre dans /images/hero-dojo.jpg -->
+                    <img src="images/hero-dojo.jpg" alt="Pratique du ju-jutsu traditionnel au dojo Henri Courtine" class="hero-image">
+                    <div class="hero-image-overlay"></div>
+                    <div class="badge-top">
+                        <span class="badge-dot"></span>
+                        <span>En cours depuis 2015</span>
+                    </div>
+                </div>
+                <div class="hero-card-content">
+                    <div class="hero-card-title">
+                        Complexe sportif Marcel Sauvage – Dojo Henri Courtine
+                    </div>
+                    <div class="hero-card-text">
+                        Place Sadi Carnot, Notre-Dame de Bondeville. Dojo lumineux, tatami confortable
+                        et ambiance conviviale pour progresser en toute sécurité.
+                    </div>
+
+                    <div class="hero-card-grid">
+                        <div class="hero-card-chip" id="horaires">
+                            <strong>Horaires principaux</strong>
+                            <span>Enfants : mercredi 14h–15h</span>
+                            <span>Ados/adultes : lundi 19h30–21h</span>
+                            
